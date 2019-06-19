@@ -1,25 +1,28 @@
 
 package com.server.commIt.model;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
-import java.util.Arrays;
 
 @Entity
 @Table(name = "quotes")
 @EntityListeners(AuditingEntityListener.class)
 
 public class Quote {
-        @Id
-        @Column(name = "quote_name", nullable = false)
-        private String quoteName;
+    @Id
+    @Column(name = "quote_name", nullable = false)
+    private String quoteName;
 
-        @Column(name = "price", nullable = false)
-        private int price;
+    @Column(name = "price", nullable = false)
+    private int price;
 
-        @Column(name = "items", nullable = false)
-        private String items;
+    @Column(name = "items", nullable = false)
+    private String items;
+
+    @Column(name = "del", nullable = false)
+    private int del;
 
     public String getQuoteName() {
         return quoteName;
@@ -45,13 +48,21 @@ public class Quote {
         this.items = items;
     }
 
+    public int getDel() {
+        return del;
+    }
+
+    public void setDel(int del) {
+        this.del = del;
+    }
+
     @Override
     public String toString() {
-        return "quote{" +
+        return "Quote{" +
                 "quoteName='" + quoteName + '\'' +
                 ", price=" + price +
-//                ", items=" + Arrays.toString(items) +
-                ", items=" + items +
+                ", items='" + items + '\'' +
+                ", del=" + del +
                 '}';
     }
 }
